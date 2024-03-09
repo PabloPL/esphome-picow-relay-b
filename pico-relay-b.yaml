@@ -26,28 +26,92 @@ light:
     rgb_order: GRB
     chipset: WS2812B
 
+button:
+
+  - platform: template
+    name: Off All Relays
+    id: relays_off
+
+    on_press:
+      then:
+        lambda: |-
+          {
+            id(relay1).turn_off();
+            id(relay2).turn_off();
+            id(relay3).turn_off();
+            id(relay4).turn_off();
+            id(relay5).turn_off();
+            id(relay6).turn_off();
+            id(relay7).turn_off();
+            id(relay8).turn_off();
+          }
+
+  - platform: template
+    name: On All Relays
+    id: relays_on
+
+    on_press:
+      then:
+        lambda: |-
+          {
+            id(relay1).turn_on();
+            id(relay2).turn_on();
+            id(relay3).turn_on();
+            id(relay4).turn_on();
+            id(relay5).turn_on();
+            id(relay6).turn_on();
+            id(relay7).turn_on();
+            id(relay8).turn_on();
+          }
+
+  - platform: template
+    name: Toggle All Relays
+    id: relays_toggle
+
+    on_press:
+      then:
+        lambda: |-
+          {
+            id(relay1).toggle();
+            id(relay2).toggle();
+            id(relay3).toggle();
+            id(relay4).toggle();
+            id(relay5).toggle();
+            id(relay6).toggle();
+            id(relay7).toggle();
+            id(relay8).toggle();
+          }
+
 switch:
   - platform: gpio
+    id: relay1
     name: "Relay1"
     pin: 21
   - platform: gpio
+    id: relay2
     name: "Relay2"
     pin: 20
   - platform: gpio
+    id: relay3
     name: "Relay3"
     pin: 19
   - platform: gpio
+    id: relay4
     name: "Relay4"
     pin: 18
   - platform: gpio
+    id: relay5
     name: "Relay5"
     pin: 17
   - platform: gpio
+    id: relay6
     name: "Relay6"
     pin: 16
   - platform: gpio
+    id: relay7
     name: "Relay7"
     pin: 15
   - platform: gpio
+    id: relay8
     name: "Relay8"
     pin: 14
