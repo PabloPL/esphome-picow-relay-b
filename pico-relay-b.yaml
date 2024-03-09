@@ -1,0 +1,53 @@
+esphome:
+  name: "pico-relay-b"
+  friendly_name: "pico-relay-b"
+
+rp2040:
+  board: rpipicow
+  framework:
+    # Required until https://github.com/platformio/platform-raspberrypi/pull/36 is merged
+    platform_version: https://github.com/maxgerhardt/platform-raspberrypi.git
+
+api:
+
+ota:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+light:
+  - platform: rp2040_pio_led_strip
+    name: "Signal Led"
+    id: signal_led
+    pin: 13
+    num_leds: 1
+    pio: 0
+    rgb_order: GRB
+    chipset: WS2812B
+
+switch:
+  - platform: gpio
+    name: "Relay1"
+    pin: 21
+  - platform: gpio
+    name: "Relay2"
+    pin: 20
+  - platform: gpio
+    name: "Relay3"
+    pin: 19
+  - platform: gpio
+    name: "Relay4"
+    pin: 18
+  - platform: gpio
+    name: "Relay5"
+    pin: 17
+  - platform: gpio
+    name: "Relay6"
+    pin: 16
+  - platform: gpio
+    name: "Relay7"
+    pin: 15
+  - platform: gpio
+    name: "Relay8"
+    pin: 14
